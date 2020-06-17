@@ -14,7 +14,7 @@ This package provides a command to put a part of your application's routes in ma
 You can install the package via Composer:
 
 ```bash
-composer require digifactory/partial-down
+composer require digifactory/laravel-partial-down
 ```
 
 ## Usage
