@@ -3,7 +3,6 @@
 namespace DigiFactory\PartialDown\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Http\Exceptions\MaintenanceModeException;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\IpUtils;
