@@ -4,7 +4,7 @@
 [![MIT Licensed](https://img.shields.io/github/license/digifactory/laravel-partial-down?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/digifactory/laravel-partial-down/master.svg?style=flat-square)](https://travis-ci.org/digifactory/laravel-partial-down)
 [![Quality Score](https://img.shields.io/scrutinizer/g/digifactory/laravel-partial-down.svg?style=flat-square)](https://scrutinizer-ci.com/g/digifactory/laravel-partial-down)
-[![StyleCI](https://styleci.io/repos/220437776/shield?branch=master)](https://styleci.io/repos/220437776)
+[![StyleCI](https://styleci.io/repos/272963036/shield?branch=master)](https://styleci.io/repos/272963036)
 [![Total Downloads](https://img.shields.io/packagist/dt/digifactory/laravel-partial-down.svg?style=flat-square)](https://packagist.org/packages/digifactory/laravel-partial-down)
 
 This package provides a command to put a part of your application's routes in maintenance mode. This only affects your HTTP routes, so queues and scheduled tasks will run.
