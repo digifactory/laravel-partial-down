@@ -4,6 +4,7 @@ namespace DigiFactory\PartialDown;
 
 use DigiFactory\PartialDown\Commands\PartialDown;
 use DigiFactory\PartialDown\Commands\PartialUp;
+use DigiFactory\PartialDown\Middleware\CheckForPartialMaintenanceMode;
 use Illuminate\Support\ServiceProvider;
 
 class PartialDownServiceProvider extends ServiceProvider
@@ -19,14 +20,7 @@ class PartialDownServiceProvider extends ServiceProvider
                 PartialUp::class,
             ]);
         }
-    }
 
-    /**
-     * Register the application services.
-     */
-    public function register()
-    {
-        // Automatically apply the package configuration
-        // $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'partial-down');
+        $this->app->get('router')->aliasMiddleware('partialDown', CheckForPartialMaintenanceMode::class);
     }
 }
