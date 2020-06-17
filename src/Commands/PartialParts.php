@@ -40,7 +40,8 @@ class PartialParts extends Command
         $parts = collect($matches[0])->unique()->map(function ($part) use ($className) {
             return str_replace($className.':', '', $part);
         });
-
-        $this->line('Parts in use: '.$parts->join(', ', ' and '));
+        
+        $headers = ['Parts in use'];
+        $this->table($headers, $parts->toArray());
     }
 }
