@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Mockery as m;
 use Orchestra\Testbench\TestCase;
 
-class CheckForMaintenanceModeTest extends TestCase
+class CheckForPartialMaintenanceModeTest extends TestCase
 {
     /**
      * @var string
