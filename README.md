@@ -36,7 +36,7 @@ php artisan partial-down backend
 And `partial-up` to bring it back online:
 
 ```
-php artisan partial-down up
+php artisan partial-up backend
 ```
 
 The `partial-down` command has Laravel's `down` command signature:
