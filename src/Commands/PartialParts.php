@@ -3,9 +3,7 @@
 namespace DigiFactory\PartialDown\Commands;
 
 use DigiFactory\PartialDown\Middleware\CheckForPartialMaintenanceMode;
-use Exception;
 use Illuminate\Console\Command;
-use Illuminate\Support\Str;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 class PartialParts extends Command
@@ -43,6 +41,6 @@ class PartialParts extends Command
             return str_replace($className.':', '', $part);
         });
 
-        $this->line('Parts in use: '. $parts->join(', ', ' and '));
+        $this->line('Parts in use: '.$parts->join(', ', ' and '));
     }
 }
