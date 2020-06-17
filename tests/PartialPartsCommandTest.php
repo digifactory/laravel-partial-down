@@ -2,21 +2,11 @@
 
 namespace DigiFactory\PartialDown\Tests;
 
-use DigiFactory\PartialDown\Commands\PartialParts;
-use DigiFactory\PartialDown\Middleware\CheckForPartialMaintenanceMode;
 use DigiFactory\PartialDown\PartialDownServiceProvider;
-use Illuminate\Console\OutputStyle;
 use Illuminate\Contracts\Console\Kernel;
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Foundation\Http\Exceptions\MaintenanceModeException;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
-use Mockery as m;
 use Orchestra\Testbench\TestCase;
-use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\StringInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 class PartialPartsCommandTest extends TestCase
