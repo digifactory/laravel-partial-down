@@ -30,9 +30,16 @@ class PartialPartsCommandTest extends TestCase
 
     public function testPartialPartCommandsReturnsNoParts()
     {
-        $this->artisan('partial-parts')
-            ->expectsOutput('No parts found!')
-            ->assertExitCode(0);
+        $kernel = $this->app->make(Kernel::class);
+
+        $kernel->handle(
+            $input = new ArrayInput(['command' => 'partial-parts']),
+            $outputBuffer = new BufferedOutput()
+        );
+
+        $output = $outputBuffer->fetch();
+
+        $this->assertStringContainsString('No parts found!', $output);
     }
 
     public function testPartialPartCommandsReturnsParts()
