@@ -50,6 +50,26 @@ protected $signature = 'partial-down {part}
 
 When a specific part is down and the IP is not allowed an `MaintenanceModeException` will be thrown, by default Laravel handles this exception with a 503 response. You can customize this, please refer the [Laravel documentation](https://laravel.com/docs/7.x/configuration#maintenance-mode) for more information.
 
+#### List used parts
+
+In large applications it can be cumbersome to find all used application parts. You can use the `php artisan partial-parts` command to view all used parts:
+
+<details>
+<summary>
+```bash
+php artisan partial-parts
+```
+</summary>
+```
++--------------+
+| Parts in use |
++--------------+
+| backend      |
+| frontend     |
++--------------+
+```
+</details>
+
 ### Testing
 
 ``` bash
