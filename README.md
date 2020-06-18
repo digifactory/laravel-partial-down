@@ -60,14 +60,16 @@ In large applications it can be cumbersome to find all used application parts. Y
 php artisan partial-parts
 </code>
 </summary>
-<code>
+    
+~~~
++--------------+  
+| Parts in use |  
++--------------+  
+| backend      |  
+| frontend     |  
 +--------------+
-| Parts in use |
-+--------------+
-| backend      |
-| frontend     |
-+--------------+
-</code>
+~~~
+
 </details>
 
 ### Testing
