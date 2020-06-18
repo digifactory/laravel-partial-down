@@ -66,8 +66,10 @@ class PartialParts extends Command
     public function handle()
     {
         $parts = collect($this->router->getRoutes())->map(function ($route) {
-            return [$this->getPartialPartsMiddleware($route)];
-        })->filter()->unique();
+            return $this->getPartialPartsMiddleware($route);
+        })->filter()->unique()->map(function ($route) {
+            return [$route];
+        });
 
         if ($parts->count() === 0) {
             $this->error('No parts found!');
