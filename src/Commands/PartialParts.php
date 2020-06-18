@@ -2,9 +2,13 @@
 
 namespace DigiFactory\PartialDown\Commands;
 
-use DigiFactory\PartialDown\Middleware\CheckForPartialMaintenanceMode;
+use Closure;
 use Illuminate\Console\Command;
-use Symfony\Component\Console\Output\BufferedOutput;
+use Illuminate\Routing\Route;
+use Illuminate\Routing\Router;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Symfony\Component\Console\Input\InputOption;
 
 class PartialParts extends Command
 {
@@ -13,35 +17,59 @@ class PartialParts extends Command
      *
      * @var string
      */
-    protected $signature = 'partial-parts';
+    protected $name = 'partial-parts';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Show all parts that are used in the application';
+    protected $description = 'List all registered routes';
+
+    /**
+     * The router instance.
+     *
+     * @var \Illuminate\Routing\Router
+     */
+    protected $router;
+
+    /**
+     * The table headers for the command.
+     *
+     * @var array
+     */
+    protected $headers = ['Domain', 'Method', 'URI', 'Name', 'Action', 'Middleware'];
+
+    /**
+     * The columns to display when using the "compact" flag.
+     *
+     * @var array
+     */
+    protected $compactColumns = ['method', 'uri', 'action'];
+
+    /**
+     * Create a new route command instance.
+     *
+     * @param \Illuminate\Routing\Router $router
+     * @return void
+     */
+    public function __construct(Router $router)
+    {
+        parent::__construct();
+
+        $this->router = $router;
+    }
 
     /**
      * Execute the console command.
      *
-     * @return int
+     * @return void
      */
     public function handle()
     {
-        $outputBuffer = new BufferedOutput();
-
-        $this->runCommand('route:list', [], $outputBuffer);
-
-        $output = $outputBuffer->fetch();
-
-        $className = CheckForPartialMaintenanceMode::class;
-
-        preg_match_all('/'.preg_quote($className).':(.*[a-z])/', $output, $matches);
-
-        $parts = collect($matches[0])->unique()->map(function ($part) use ($className) {
-            return [str_replace($className.':', '', $part)];
-        });
+        $parts = collect($this->router->getRoutes())->map(function ($route) {
+            return [$this->getPartialPartsMiddleware($route)];
+        })->filter()->unique();
 
         if ($parts->count() === 0) {
             $this->error('No parts found!');
@@ -49,5 +77,22 @@ class PartialParts extends Command
             $headers = ['Parts in use'];
             $this->table($headers, $parts->toArray());
         }
+    }
+
+    /**
+     * Get the route information for a given route.
+     *
+     * @param \Illuminate\Routing\Route $route
+     * @return array
+     */
+    protected function getPartialPartsMiddleware(Route $route)
+    {
+        return collect($route->gatherMiddleware())->map(function ($middleware) {
+            return $middleware instanceof Closure ? 'Closure' : $middleware;
+        })->filter(function($middleware) {
+            return Str::contains($middleware, 'partialDown');
+        })->map(function($middleware) {
+            return Str::replaceFirst('partialDown:', '', $middleware);
+        })->first();
     }
 }

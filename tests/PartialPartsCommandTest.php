@@ -47,7 +47,7 @@ class PartialPartsCommandTest extends TestCase
 
         $this->assertStringContainsString('backend', $output);
         $this->assertStringContainsString('frontend', $output);
-        $this->assertStringNotContainsString('No parts found!', $output);
+        $this->assertStringNotContainsString('test', $output);
     }
 
     protected function setUpRoutes()
@@ -55,7 +55,7 @@ class PartialPartsCommandTest extends TestCase
         /** @var Router $router */
         $router = $this->app->get('router');
 
-        $router->get('test-1')->middleware('partialDown:backend');
+        $router->get('test-1')->middleware('partialDown:backend', 'test');
         $router->get('test-2')->middleware(['partialDown:frontend']);
     }
 
