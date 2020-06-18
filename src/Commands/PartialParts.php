@@ -6,9 +6,7 @@ use Closure;
 use Illuminate\Console\Command;
 use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Symfony\Component\Console\Input\InputOption;
 
 class PartialParts extends Command
 {
@@ -89,9 +87,9 @@ class PartialParts extends Command
     {
         return collect($route->gatherMiddleware())->map(function ($middleware) {
             return $middleware instanceof Closure ? 'Closure' : $middleware;
-        })->filter(function($middleware) {
+        })->filter(function ($middleware) {
             return Str::contains($middleware, 'partialDown');
-        })->map(function($middleware) {
+        })->map(function ($middleware) {
             return Str::replaceFirst('partialDown:', '', $middleware);
         })->first();
     }
