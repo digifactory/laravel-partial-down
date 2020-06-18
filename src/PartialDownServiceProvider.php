@@ -3,6 +3,7 @@
 namespace DigiFactory\PartialDown;
 
 use DigiFactory\PartialDown\Commands\PartialDown;
+use DigiFactory\PartialDown\Commands\PartialParts;
 use DigiFactory\PartialDown\Commands\PartialUp;
 use DigiFactory\PartialDown\Middleware\CheckForPartialMaintenanceMode;
 use Illuminate\Support\ServiceProvider;
@@ -18,6 +19,7 @@ class PartialDownServiceProvider extends ServiceProvider
             $this->commands([
                 PartialDown::class,
                 PartialUp::class,
+                PartialParts::class,
             ]);
         }
 
