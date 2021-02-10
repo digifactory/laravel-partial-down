@@ -76,8 +76,11 @@ class CheckForPartialMaintenanceModeTest extends TestCase
 
     /**
      * Make a down file with the given allowed ips.
+     *
+     * @param array $ips
+     * @return array
      */
-    protected function makeDownFile($ips = null)
+    protected function makeDownFile($ips = []): array
     {
         $data = [
             'time' => time(),
@@ -96,7 +99,7 @@ class CheckForPartialMaintenanceModeTest extends TestCase
 
     public function testApplicationDeniesSomeIPs()
     {
-        $this->makeDownFile(null);
+        $this->makeDownFile();
 
         $this->expectException(MaintenanceModeException::class);
         $this->expectExceptionMessage('This application is down for maintenance.');
