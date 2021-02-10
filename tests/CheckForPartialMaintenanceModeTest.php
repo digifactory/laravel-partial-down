@@ -75,7 +75,10 @@ class CheckForPartialMaintenanceModeTest extends TestCase
     }
 
     /**
-     * Make a down file with the given allowed ips
+     * Make a down file with the given allowed ips.
+     *
+     * @param string|array $ips
+     * @return array
      */
     protected function makeDownFile($ips = null)
     {
