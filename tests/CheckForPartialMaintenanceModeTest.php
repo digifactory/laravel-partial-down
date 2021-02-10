@@ -80,7 +80,7 @@ class CheckForPartialMaintenanceModeTest extends TestCase
      * @param string|array $ips
      * @return array
      */
-    protected function makeDownFile($ips = null)
+    protected function makeDownFile($ips = null): array
     {
         $data = [
             'time' => time(),
