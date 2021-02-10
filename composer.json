@@ -3,7 +3,9 @@
     "description": "Put specific parts of your application in maintenance mode using",
     "keywords": [
         "digifactory",
-        "partial-down"
+        "partial-down",
+        "laravel down partial",
+        "laravel down part"
     ],
     "homepage": "https://github.com/digifactory/laravel-partial-down",
     "license": "MIT",
