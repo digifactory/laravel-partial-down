@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/digifactory/laravel-partial-down.svg?style=flat-square)](https://packagist.org/packages/digifactory/laravel-partial-down)
 [![MIT Licensed](https://img.shields.io/github/license/digifactory/laravel-partial-down?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/digifactory/laravel-partial-down/master.svg?style=flat-square)](https://travis-ci.org/digifactory/laravel-partial-down)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/digifactory/laravel-partial-down/run-php-tests/master)
 [![Quality Score](https://img.shields.io/scrutinizer/g/digifactory/laravel-partial-down.svg?style=flat-square)](https://scrutinizer-ci.com/g/digifactory/laravel-partial-down)
 [![StyleCI](https://styleci.io/repos/272963036/shield?branch=master)](https://styleci.io/repos/272963036)
 [![Total Downloads](https://img.shields.io/packagist/dt/digifactory/laravel-partial-down.svg?style=flat-square)](https://packagist.org/packages/digifactory/laravel-partial-down)
