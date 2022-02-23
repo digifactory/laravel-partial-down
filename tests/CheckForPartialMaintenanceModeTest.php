@@ -92,7 +92,7 @@ class CheckForPartialMaintenanceModeTest extends TestCase
             $data['allowed'] = $ips;
         }
 
-        $this->files->put($this->downFilePath, json_encode($data, JSON_PRETTY_PRINT));
+        $this->files->put(storage_path('framework/partial-down-'.$this->part), json_encode($data, JSON_PRETTY_PRINT));
 
         return $data;
     }
@@ -146,28 +146,18 @@ class CheckForPartialMaintenanceModeTest extends TestCase
         ];
     }
 
-    protected function getEnvironmentSetUp($app)
-    {
-        $app['path.storage'] = $this->storagePath;
-    }
-
     protected function setUp(): void
     {
         if (is_null($this->files)) {
             $this->files = new Filesystem;
         }
 
-        $this->storagePath = __DIR__.'/tmp';
-        $this->downFilePath = $this->storagePath.'/framework/partial-down-'.$this->part;
-
-        $this->files->makeDirectory($this->storagePath.'/framework', 0755, true);
-
         parent::setUp();
     }
 
     protected function tearDown(): void
     {
-        $this->files->deleteDirectory($this->storagePath);
+        $this->files->delete(storage_path('framework/partial-down-'.$this->part));
 
         m::close();
     }

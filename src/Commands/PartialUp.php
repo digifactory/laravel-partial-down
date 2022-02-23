@@ -48,7 +48,7 @@ class PartialUp extends Command
 
             $this->error($e->getMessage());
 
-            return 1;
+            return static::FAILURE;
         }
     }
 }
