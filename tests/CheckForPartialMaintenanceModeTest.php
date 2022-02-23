@@ -77,7 +77,7 @@ class CheckForPartialMaintenanceModeTest extends TestCase
     /**
      * Make a down file with the given allowed ips.
      *
-     * @param array $ips
+     * @param  array  $ips
      * @return array
      */
     protected function makeDownFile($ips = []): array

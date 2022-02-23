@@ -48,7 +48,7 @@ class PartialParts extends Command
     /**
      * Create a new route command instance.
      *
-     * @param \Illuminate\Routing\Router $router
+     * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
     public function __construct(Router $router)
@@ -82,7 +82,7 @@ class PartialParts extends Command
     /**
      * Get the route information for a given route.
      *
-     * @param \Illuminate\Routing\Route $route
+     * @param  \Illuminate\Routing\Route  $route
      * @return array
      */
     protected function getPartialPartsMiddleware(Route $route)
