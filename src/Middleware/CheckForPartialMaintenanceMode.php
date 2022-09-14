@@ -31,7 +31,7 @@ class CheckForPartialMaintenanceMode
                 return $next($request);
             }
 
-            throw new MaintenanceModeException($data['time'], $data['retry'], $data['message']);
+            throw new MaintenanceModeException($data['time'], $data['retry'], $data['message'] ?? '');
         }
 
         return $next($request);
